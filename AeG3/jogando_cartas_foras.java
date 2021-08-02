@@ -14,6 +14,7 @@ import java.util.Stack;
  *
  * @author Usuario
  */
+//Versão antiga
 public class jogando_cartas_foras {
     public static void main (String args[]){
         
