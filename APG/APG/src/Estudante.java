@@ -17,7 +17,7 @@ public class Estudante implements Comparable<Estudante> {
 	private static int nEstudantes = 0;
 	private static Random geradorMatricula = new Random();
 	private static Random geradorCurso = new Random();
-	private static ArrayList<Integer> arrayzinho = new ArrayList<>();
+	
 
 	public Estudante() {
 		geraMatricula();
@@ -31,48 +31,14 @@ public class Estudante implements Comparable<Estudante> {
 	// Gustavo é top
 	// Gustavo é tudo
 	
-	public static int[] randomizaVetor(int[] vetor1) {
-        Random random = new Random();
-
-        for (int i = 0; i < vetor1.length; i++) {
-            boolean novoNumero = false;
-            int numero = -1;
-            while (!novoNumero) {
-                numero = random.nextInt(vetor1.length + 1); 
-                novoNumero = verificarExistencia(numero, vetor1);
-            }
-            vetor1[i] = numero;
-        }
-        return vetor1;
-    }
 	
-	public static boolean verificarExistencia(int numero, int[] vetor1) {
-        for (int i = 0; i < vetor1.length; i++) {
-            if (numero == vetor1[i]) {
-                return false;
-            }
-        }
-        return true;
-    }
-	
-	private void geraRandom() {
-		for (int i = 0; i < 100000; i++) {
-			arrayzinho.add(i);
-		}
-		Collections.shuffle(arrayzinho);
 
-	}
-
-	private void geraMatricula() {
-		if (nEstudantes % 2 == 0) {
-			this.matricula = 202050000 - arrayzinho.get(0);
-			arrayzinho.remove(0);
-		} else{
-			this.matricula = 202050000 + arrayzinho.get(0);
-			arrayzinho.remove(0);
-		}
+private void geraMatricula(){
+		if(nEstudantes%2==0)
+			this.matricula = 202050000 - geradorMatricula.nextInt(50000);
+		else
+			this.matricula = 202050000 + geradorMatricula.nextInt(50000);
 		nEstudantes++;
-
 	}
 
 	/**
