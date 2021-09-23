@@ -1,4 +1,4 @@
-import java.util.Random;
+// import java.util.Random;
 import java.util.Scanner;
 
 public class Vetor {
@@ -23,14 +23,16 @@ public class Vetor {
     }
 
     public Estudante[] removeEstudantes(Estudante array[]) {
-        int indexATT = 0;
-
         for (int i = 0; i < array.length; i++) {
-            if (array[i].getMatricula() < 202060000) {
-                array[i] = null;
+            if(array[i] != null){
+
+                if (array[i].getMatricula() < 202060000) {
+                    array[i] = null;
+                    
+                }
             }
         }
-
+        
         return array;
     }
 
@@ -119,52 +121,76 @@ public class Vetor {
     public static void main(String[] args) {
         Vetor v = new Vetor();
         Estudante[] array = new Estudante[100000];
-        //v.inserirEstudante(array);
+        // v.inserirEstudante(array);
 
-    // V de Gustavo
-    // V de Vitória
-       // v.mergeSort(array.length, array);
-       // printaVetor(array);
-          
-          
-       // System.out.println("Número de alunos que cursam ES: " + v.verificaCurso(array));
+        // V de Gustavo
+        // V de Vitória
+        // v.mergeSort(array.length, array);
+        // printaVetor(array);
+
+        // System.out.println("Número de alunos que cursam ES: " +
+        // v.verificaCurso(array));
 
         Scanner in = new Scanner(System.in);
 
         int op;
-        do{
-            System.out.println("1. Inserir 100000 estudantes");
-            System.out.println("2. Apresentar todos estudantes em ordem crescente de matrícula");
-            System.out.println("3. Estudantes realizando o curso de ES");
-            System.out.println("4. Remover estudantes com matricula igual ou inferior a 202060000");
-            System.out.println("5. Sair");
+        double startTime = System.nanoTime();
+        v.inserirEstudante(array);
+        double endTime = System.nanoTime();
+        double timeElapsed = endTime - startTime;
+        System.out.print("Tempo de criação do vetor: "+timeElapsed/1000000+"ms \n");
+        do {
+            System.out.println("1. Apresentar todos estudantes em ordem crescente de matrícula");
+            System.out.println("2. Estudantes realizando o curso de ES");
+            System.out.println("3. Remover estudantes com matricula igual ou inferior a 202060000");
+            System.out.println("4. Sair");
             op = in.nextInt();
 
-            switch(op){
-                case 1: 
-                v.inserirEstudante(array);
-                printaVetor(array);
-                break;
+            switch (op) {
+                case 1:
+                    startTime = System.nanoTime();
+                    mergeSort(array.length, array);
+                    endTime = System.nanoTime();
+                    timeElapsed = endTime - startTime;
+                    
+                    printaVetor(array);
+                    System.out.println("==============================================");
+                    System.out.println("Execution time in nanoseconds: " + timeElapsed);
+                    System.out.println("Execution time in miliseconds: " + timeElapsed / 1000000);
+                    System.out.println("==============================================");
+                    break;
+                    
+                    case 2:
+                    startTime = System.nanoTime();
 
-                case 2:
-                v.inserirEstudante(array);
-                v.mergeSort(array.length, array);
-                printaVetor(array);
-                break;
+                    System.out.println("Número de alunos que cursam ES: " + v.verificaCurso(array));
+                    endTime = System.nanoTime();
+                    timeElapsed = endTime - startTime;
+                    System.out.println("==============================================");
+                    System.out.println("Execution time in nanoseconds: " + timeElapsed);
+                    System.out.println("Execution time in miliseconds: " + timeElapsed / 1000000);
+                    System.out.println("==============================================");
+                    break;
 
                 case 3:
-                v.inserirEstudante(array);
-                System.out.println("Número de alunos que cursam ES: " + v.verificaCurso(array));
-                break;
-
+                    startTime = System.nanoTime();
+                    v.removeEstudantes(array);
+                    endTime = System.nanoTime();
+                    printaVetor(array);
+                    timeElapsed = endTime - startTime;
+                    System.out.println("==============================================");
+                    System.out.println("Execution time in nanoseconds: " + timeElapsed);
+                    System.out.println("Execution time in miliseconds: " + timeElapsed / 1000000);
+                    System.out.println("==============================================");
+                    break;//dianho no break
                 case 4:
-                if(array == null){}
-                v.inserirEstudante(array);
-                v.removeEstudantes(array);
-                printaVetor(array);
-
+                    System.out.println("SAINDO...");
+                    in.close();
             }
-        }while(op != 0);
+            
+
+            System.out.println(timeElapsed);
+        } while (op != 4);
 
     }
 }

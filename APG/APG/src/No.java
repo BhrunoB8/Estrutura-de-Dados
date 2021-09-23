@@ -1,21 +1,22 @@
 //Classe No para a Lista DuplamenteEncadeada
 public class No {
 
-    private int elemento;
+   
     private No anterior;
     private No proximo;
+    private Estudante estudante;
 
-    public No(int elemento) {
-        this.elemento = elemento;
+    public No(Estudante estudante) {
+        this.estudante = estudante;
         anterior = proximo = null;
     }
 
-    public int getElemento() {
-        return elemento;
+    public Estudante getEstudante() {
+        return estudante;
     }
 
-    public void setElemento(int elemento) {
-        this.elemento = elemento;
+    public void setEstudante(Estudante estudante) {
+        this.estudante = estudante;
     }
 
     public No getAnterior() {

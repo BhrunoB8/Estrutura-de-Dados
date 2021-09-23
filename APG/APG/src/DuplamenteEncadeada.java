@@ -61,27 +61,27 @@ public class DuplamenteEncadeada {
         quantidade++;
     }
 
-    //Insere dado na lista em local escolhido
-    public void inserirOrdenado(No no) {
-        if (isVazia()) {
-            inicio = no;
-        } else {
-            No aux = inicio;
-            No anterior = inicio;
+    // //Insere dado na lista em local escolhido
+    // public void inserirOrdenado(No no) {
+    //     if (isVazia()) {
+    //         inicio = no;
+    //     } else {
+    //         No aux = inicio;
+    //         No anterior = inicio;
 
-            if (no.getElemento() < inicio.getElemento()) {
-                no.setProximo(inicio);
-                inicio = no;
-            } else {
-                while (no.getElemento() > aux.getElemento() || aux.getProximo() != null) {
-                    anterior = aux;
-                    aux = aux.getProximo();
-                }
-                anterior.setProximo(no);
-                no.setProximo(aux);
-            }
-        }
-    }
+    //         if (no.getEstudante() < inicio.getEstudante()) {
+    //             no.setProximo(inicio);
+    //             inicio = no;
+    //         } else {
+    //             while (no.getEstudante() > aux.getEstudante() || aux.getProximo() != null) {
+    //                 anterior = aux;
+    //                 aux = aux.getProximo();
+    //             }
+    //             anterior.setProximo(no);
+    //             no.setProximo(aux);
+    //         }
+    //     }
+    // }
 
 
     //**IMPRESSÕES */
@@ -92,52 +92,52 @@ public class DuplamenteEncadeada {
         } else {
             No aux = this.inicio;
             while (aux != null) {
-                System.out.println(aux.getElemento());
+                System.out.println(aux.getEstudante());
                 aux = aux.getProximo();
             }
         }
     }
 
-    //Imprime o maior da lista
-    public double maior() {
-        double maior = 0;
-        int contador = 0;
-        if (!isVazia()) {
-            No aux = this.inicio;
-            while (aux != null) {
-                if (aux.getElemento() > maior) {
-                    maior = aux.getElemento();
-                }
-                aux = aux.getProximo();
-            }
-            return maior;
-        } else {
-            System.out.println("Não foi possível mostrar o maior, pois a DuplamenteEncadeada está vazia!");
-            return 0.0;
-        }
-    }
+    // //Imprime o maior da lista
+    // public double maior() {
+    //     double maior = 0;
+    //     int contador = 0;
+    //     if (!isVazia()) {
+    //         No aux = this.inicio;
+    //         while (aux != null) {
+    //             if (aux.getEstudante() > maior) {
+    //                 maior = aux.getEstudante();
+    //             }
+    //             aux = aux.getProximo();
+    //         }
+    //         return maior;
+    //     } else {
+    //         System.out.println("Não foi possível mostrar o maior, pois a DuplamenteEncadeada está vazia!");
+    //         return 0.0;
+    //     }
+    // }
 
-    //Imprime o menor da lista
-    public double menor() {
-        double menor = 0;
-        int contador = 0;
-        if (!isVazia()) {
-            No aux = this.inicio;
-            while (aux != null) {
-                if (contador == 0) {
-                    menor = aux.getElemento();
-                    contador++;
-                } else if (aux.getElemento() < menor) {
-                    menor = aux.getElemento();
-                }
-                aux = aux.getProximo();
-            }
-            return menor;
-        } else {
-            System.out.println("Não foi possível mostrar o menor, pois a DuplamenteEncadeada está vazia!");
-            return 0.0;
-        }
-    }
+    // //Imprime o menor da lista
+    // public double menor() {
+    //     double menor = 0;
+    //     int contador = 0;
+    //     if (!isVazia()) {
+    //         No aux = this.inicio;
+    //         while (aux != null) {
+    //             if (contador == 0) {
+    //                 menor = aux.getEstudante();
+    //                 contador++;
+    //             } else if (aux.getEstudante() < menor) {
+    //                 menor = aux.getEstudante();
+    //             }
+    //             aux = aux.getProximo();
+    //         }
+    //         return menor;
+    //     } else {
+    //         System.out.println("Não foi possível mostrar o menor, pois a DuplamenteEncadeada está vazia!");
+    //         return 0.0;
+    //     }
+    // }
 
 
     //**REMOÇÕES */
@@ -188,167 +188,167 @@ public class DuplamenteEncadeada {
         return this;
     }
 
-    //Deleta os dados repetidos
-    public DuplamenteEncadeada eliminarRepetidos() {
-        DuplamenteEncadeada nova = new DuplamenteEncadeada();
-        No aux = this.inicio;
-        if (!isVazia()) {
-            while (aux != null) {
-                if (!nova.contem(aux.getElemento())) {
-                    nova.inserirFim(new No(aux.getElemento()));
-                }
-                aux = aux.getProximo();
-            }
-            return nova;
-        } else {
-            System.out.println("A DuplamenteEncadeada está vazia, chefe!");
-            return null;
-        }
-    }
+    // //Deleta os dados repetidos
+    // public DuplamenteEncadeada eliminarRepetidos() {
+    //     DuplamenteEncadeada nova = new DuplamenteEncadeada();
+    //     No aux = this.inicio;
+    //     if (!isVazia()) {
+    //         while (aux != null) {
+    //             if (!nova.contem(aux.getEstudante())) {
+    //                 nova.inserirFim(new No(aux.getEstudante()));
+    //             }
+    //             aux = aux.getProximo();
+    //         }
+    //         return nova;
+    //     } else {
+    //         System.out.println("A DuplamenteEncadeada está vazia, chefe!");
+    //         return null;
+    //     }
+    // }
 
    
-    //**CALCULOS */
-    //Calcula a media da lista
-    public double media() {
-        double media = 0;
-        int acumulador = 0;
-        double contador = 0;
-        if (!isVazia()) {
-            No aux = this.inicio;
-            while (aux != null) {
-                acumulador += aux.getElemento();
-                aux = aux.getProximo();
-                contador++;
-            }
-            media = acumulador / contador;
-            return media;
-        } else {
-            System.out.println("Não foi possível calcular, pois a DuplamenteEncadeada está vazia!");
-            return 0.0;
-        }
-    }
+    // //**CALCULOS */
+    // //Calcula a media da lista
+    // public double media() {
+    //     double media = 0;
+    //     int acumulador = 0;
+    //     double contador = 0;
+    //     if (!isVazia()) {
+    //         No aux = this.inicio;
+    //         while (aux != null) {
+    //             acumulador += aux.getEstudante();
+    //             aux = aux.getProximo();
+    //             contador++;
+    //         }
+    //         media = acumulador / contador;
+    //         return media;
+    //     } else {
+    //         System.out.println("Não foi possível calcular, pois a DuplamenteEncadeada está vazia!");
+    //         return 0.0;
+    //     }
+    // }
 
-    //Conta os pares da lista
-    public int pares() {
-        int contador = 0;
-        if (!isVazia()) {
-            No aux = this.inicio;
-            while (aux != null) {
-                if (aux.getElemento() % 2 == 0) {
-                    contador++;
-                }
-                aux = aux.getProximo();
-            }
-            return contador;
-        } else {
-            System.out.println("Não foi possível ver quantos pares tem, pois a DuplamenteEncadeada está vazia!");
-            return 0;
-        }
-    }
+    // //Conta os pares da lista
+    // public int pares() {
+    //     int contador = 0;
+    //     if (!isVazia()) {
+    //         No aux = this.inicio;
+    //         while (aux != null) {
+    //             if (aux.getEstudante() % 2 == 0) {
+    //                 contador++;
+    //             }
+    //             aux = aux.getProximo();
+    //         }
+    //         return contador;
+    //     } else {
+    //         System.out.println("Não foi possível ver quantos pares tem, pois a DuplamenteEncadeada está vazia!");
+    //         return 0;
+    //     }
+    // }
 
-    //Muda valor
-    public DuplamenteEncadeada trocarValor(DuplamenteEncadeada DuplamenteEncadeada, int antigo, int novo) {
-        DuplamenteEncadeada nova = new DuplamenteEncadeada();
-        No aux = DuplamenteEncadeada.inicio;
-        if (!DuplamenteEncadeada.isVazia()) {
-            while (aux != null) {
-                if (aux.getElemento() == antigo) {
-                    nova.inserirFim(new No(novo));
-                } else {
-                    nova.inserirFim(new No(aux.getElemento()));
-                }
-                aux = aux.getProximo();
-            }
-            return nova;
-        } else {
-            System.out.println("A DuplamenteEncadeada passada está vazia!");
-            return null;
-        }
-    }
+    // //Muda valor
+    // public DuplamenteEncadeada trocarValor(DuplamenteEncadeada DuplamenteEncadeada, int antigo, int novo) {
+    //     DuplamenteEncadeada nova = new DuplamenteEncadeada();
+    //     No aux = DuplamenteEncadeada.inicio;
+    //     if (!DuplamenteEncadeada.isVazia()) {
+    //         while (aux != null) {
+    //             if (aux.getEstudante() == antigo) {
+    //                 nova.inserirFim(new No(novo));
+    //             } else {
+    //                 nova.inserirFim(new No(aux.getEstudante()));
+    //             }
+    //             aux = aux.getProximo();
+    //         }
+    //         return nova;
+    //     } else {
+    //         System.out.println("A DuplamenteEncadeada passada está vazia!");
+    //         return null;
+    //     }
+    // }
 
-    //Confere valor
-    public boolean contem(int valor) {
-        No aux = this.inicio;
-        if (!isVazia()) {
-            while (aux != null) {
-                if (aux.getElemento() == valor) {
-                    return true;
-                } else {
-                    aux = aux.getProximo();
-                }
-            }
-            return false;
-        } else {
-            System.out.println("A DuplamenteEncadeada está vazia!");
-            return false;
-        }
-    }
-
-
-    //Calcula a união da lista
-    public DuplamenteEncadeada uniao(DuplamenteEncadeada parametro) {
-        if (!this.isVazia() && !parametro.isVazia()) {
-            DuplamenteEncadeada todos = this.clonarNaDuplamenteEncadeada(parametro);
-            todos = todos.eliminarRepetidos();
-            return todos;
-        } else {
-            System.out.println("Aconteceu algum erro!");
-            return null;
-        }
-    }
-
-    //Calcula a intersecção da lista
-    public DuplamenteEncadeada interseccao(DuplamenteEncadeada parametro) {
-        if (!isVazia() && !parametro.isVazia()) {
-            DuplamenteEncadeada nova = new DuplamenteEncadeada();
-            No aux = this.inicio;
-            while (aux != null) {
-                if (parametro.contem(aux.getElemento())) {
-                    nova.inserirFim(new No(aux.getElemento()));
-                }
-                aux = aux.getProximo();
-            }
-            return nova;
-        } else {
-            System.out.println("Aconteceu algum erro na intersecção!");
-            return null;
-        }
-    }
-
-    //Calcula a diferença da lista
-    public DuplamenteEncadeada diferenca(DuplamenteEncadeada parametro) {
-        if (!isVazia() && !parametro.isVazia()) {
-            DuplamenteEncadeada nova = new DuplamenteEncadeada();
-            No aux = this.inicio;
-            while (aux != null) {
-                if (!parametro.contem(aux.getElemento())) {
-                    nova.inserirFim(new No(aux.getElemento()));
-                }
-                aux = aux.getProximo();
-            }
-            return nova;
-        } else {
-            System.out.println("Houve erro em encotrar a diferença!");
-            return null;
-        }
-    }
+    // //Confere valor
+    // public boolean contem(int valor) {
+    //     No aux = this.inicio;
+    //     if (!isVazia()) {
+    //         while (aux != null) {
+    //             if (aux.getEstudante() == valor) {
+    //                 return true;
+    //             } else {
+    //                 aux = aux.getProximo();
+    //             }
+    //         }
+    //         return false;
+    //     } else {
+    //         System.out.println("A DuplamenteEncadeada está vazia!");
+    //         return false;
+    //     }
+    // }
 
 
-    //**ORDENAÇÕES */
-    //Ordena a lista
-    public DuplamenteEncadeada ordenar() {
-        DuplamenteEncadeada ordenada = new DuplamenteEncadeada();
-        if (!isVazia()) {
-            No aux = inicio;
-            while (aux != null) {
-                ordenada.inserirOrdenado(new No(aux.getElemento()));
-                aux = aux.getProximo();
-            }
-            return ordenada;
-        } else {
-            return null;
-        }
-    }
+    // //Calcula a união da lista
+    // public DuplamenteEncadeada uniao(DuplamenteEncadeada parametro) {
+    //     if (!this.isVazia() && !parametro.isVazia()) {
+    //         DuplamenteEncadeada todos = this.clonarNaDuplamenteEncadeada(parametro);
+    //         todos = todos.eliminarRepetidos();
+    //         return todos;
+    //     } else {
+    //         System.out.println("Aconteceu algum erro!");
+    //         return null;
+    //     }
+    // }
+
+    // //Calcula a intersecção da lista
+    // public DuplamenteEncadeada interseccao(DuplamenteEncadeada parametro) {
+    //     if (!isVazia() && !parametro.isVazia()) {
+    //         DuplamenteEncadeada nova = new DuplamenteEncadeada();
+    //         No aux = this.inicio;
+    //         while (aux != null) {
+    //             if (parametro.contem(aux.getEstudante())) {
+    //                 nova.inserirFim(new No(aux.getEstudante()));
+    //             }
+    //             aux = aux.getProximo();
+    //         }
+    //         return nova;
+    //     } else {
+    //         System.out.println("Aconteceu algum erro na intersecção!");
+    //         return null;
+    //     }
+    // }
+
+    // //Calcula a diferença da lista
+    // public DuplamenteEncadeada diferenca(DuplamenteEncadeada parametro) {
+    //     if (!isVazia() && !parametro.isVazia()) {
+    //         DuplamenteEncadeada nova = new DuplamenteEncadeada();
+    //         No aux = this.inicio;
+    //         while (aux != null) {
+    //             if (!parametro.contem(aux.getEstudante())) {
+    //                 nova.inserirFim(new No(aux.getEstudante()));
+    //             }
+    //             aux = aux.getProximo();
+    //         }
+    //         return nova;
+    //     } else {
+    //         System.out.println("Houve erro em encotrar a diferença!");
+    //         return null;
+    //     }
+    // }
+
+
+    // //**ORDENAÇÕES */
+    // //Ordena a lista
+    // public DuplamenteEncadeada ordenar() {
+    //     DuplamenteEncadeada ordenada = new DuplamenteEncadeada();
+    //     if (!isVazia()) {
+    //         No aux = inicio;
+    //         while (aux != null) {
+    //             ordenada.inserirOrdenado(new No(aux.getEstudante()));
+    //             aux = aux.getProximo();
+    //         }
+    //         return ordenada;
+    //     } else {
+    //         return null;
+    //     }
+    // }
 
     //Divide a lista
     public DuplamenteEncadeada dividir(int posicao) {
@@ -359,7 +359,7 @@ public class DuplamenteEncadeada {
         }
 
         for (int i = posicao; i < this.quantidade; i++) {
-            nova.inserirFim(new No(this.pegarPosicao(i).getElemento()));
+            nova.inserirFim(new No(this.pegarPosicao(i).getEstudante()));
         }
 
         return nova;
@@ -386,7 +386,7 @@ public class DuplamenteEncadeada {
         No aux = this.inicio;
         if (!isVazia()) {
             while (aux != null) {
-                parametro.inserirFim(new No(aux.getElemento()));
+                parametro.inserirFim(new No(aux.getEstudante()));
                 aux = aux.getProximo();
             }
             return parametro;
