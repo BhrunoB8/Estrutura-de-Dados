@@ -80,7 +80,7 @@ public class DuplamenteEncadeada {
         }
     }
 
-    public Estudante retirarHead() {
+    public Estudante retirarInicio() {
         if (head == null) {
             return null;
         }
