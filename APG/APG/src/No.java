@@ -46,4 +46,24 @@ public class No {
     public void setElemento(int elemento) {
         this.elemento = elemento;
     }
+
+    // public void removerEstudantes() {
+    //     Estudante es = head.estudante;
+    //     No aux = head;
+    //     int count = 0;
+    //     if (!isVazio()) {
+    //         for (aux = head; aux == tail; aux = aux.proximo) {
+    //             count++;
+    //             if (es.getMatricula() < 202060000) {
+    //                 System.out.println("ok1");
+    //                 remover(count);
+    //             } else {
+    //                 System.out.println("ok2");
+    //                 System.out.println(es.toString());
+    //             }
+    //         }
+    //     } else {
+    //         System.out.println("ok3");
+    //     }
+    // }
 }

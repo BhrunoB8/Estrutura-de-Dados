@@ -1,10 +1,13 @@
-import java.util.Scanner;
+
+// import java.util.Scanner;
 
 public class DuplamenteEncadeada {
 
-    private No head = null;
-    private No tail = null;
+    private No head;
+    private No tail;
     private int tamanho;
+    private int quantidade;
+    private No[] nos;
 
     public boolean isVazio() {
         if (head == null && tail == null)
@@ -52,7 +55,7 @@ public class DuplamenteEncadeada {
 
     }
 
-    public void inserirheadThiago(Estudante info) {
+    public No inserirhead(Estudante info) {
         No no = new No();
         no.estudante = info;
         no.anterior = null;
@@ -69,15 +72,63 @@ public class DuplamenteEncadeada {
             tail = head;
         }
         tamanho++;
-
+        if (tamanho == 1) {
+            return no;
+        }
+        return null;
     }
 
-    public void inserirEstudantes() {
-        for (int i = 0; i < 100000; i++) {
+    // public void inserirInicio(No no) {
+    // if (isVazio()) {
+    // head = no;
+    // tail = no;
+    // } else {
+    // no.setProximo(this.head);
+    // head.setProximo(no);
+    // this.head = no;
+    // }
+    // quantidade++;
+    // }
+
+    // public void inserir(No no, int posicao) {
+    // if (isVazio() || posicao <= 1) {
+    // inserirInicio(no);
+    // // } else if (posicao > quantidade) {
+    // // inserirhead(no)
+    // } else {
+    // No aux = this.head;
+    // for (int i = 1; i < posicao; i++) {
+    // aux = aux.getProximo();
+    // }
+    // no.setProximo(aux);
+    // no.setAnterior(aux.getAnterior());
+    // no.getAnterior().setProximo(no);
+    // aux.setAnterior(no);
+    // }
+    // this.quantidade++;
+    // }
+
+    public No[] inserirEstudantes() {
+
+        int q = 10;
+        nos = new No[q];
+        for (int i = 0; i < q; i++) {
+            No n = new No();
             Estudante es = new Estudante();
-            inserirheadThiago(es);
-            System.out.println(es.toString());
+            n.setEstudante(es);
+            nos[i] = n;
+            inserirhead(es);
+            System.out.println(n.estudante.toString());
+            quantidade++;
+            // if(i==quantidade-1){
+            // System.out.println(nos[i].estudante.toString());
+            // return nos;
+            // }else{
+            // System.out.println("");
+            // }
+            //
         }
+        return nos;
     }
 
     public Estudante retirarInicio() {
@@ -88,17 +139,88 @@ public class DuplamenteEncadeada {
         head = head.proximo;
         if (head != null) {
             head.anterior = null;
-        }else{
+        } else {
             tail = null;
         }
         tamanho--;
         return out;
     }
 
+    public No removerEstudante() {
+        int count = 1;
+        No aux = nos[count-1];
+        if (!isVazio() && count >= 1 && count <= quantidade) {
+            count++;
+            if (count == 1) {
+                head = aux.getProximo();
+                if (head != null) {
+
+                    head.setAnterior(null);
+                } else if (count == quantidade) {
+
+                    aux = tail;
+                    tail = tail.getAnterior();
+                    tail.setProximo(null);
+                }
+            } else {
+                for (int i = 1; i < count; i++) {
+                    aux = aux.getProximo();
+                }
+                aux.getAnterior().setProximo(aux.getProximo());
+                aux.getProximo().setAnterior(aux.getAnterior());
+            }
+            if (aux.estudante.getMatricula() < 202060000) {
+
+                aux.setAnterior(null);
+                aux.setProximo(null);
+                quantidade--;
+            }
+        } else {
+
+        }
+        return aux;
+    }
+
+    public No remover(int posicao) {
+        No aux = head;
+        if (!isVazio() && posicao >= 1 && posicao <= quantidade) {
+            if (posicao == 1) {
+                head = aux.getProximo();
+                if (head != null) {
+
+                    head.setAnterior(null);
+                } else if (posicao == quantidade) {
+
+                    aux = tail;
+                    tail = tail.getAnterior();
+                    tail.setProximo(null);
+                }
+            } else {
+                for (int i = 1; i < posicao; i++) {
+                    aux = aux.getProximo();
+                }
+                aux.getAnterior().setProximo(aux.getProximo());
+                aux.getProximo().setAnterior(aux.getAnterior());
+            }
+            aux.setProximo(null);
+            aux.setAnterior(null);
+            quantidade--;
+        }
+        return aux;
+    }
+
     public static void main(String[] args) {
         DuplamenteEncadeada l = new DuplamenteEncadeada();
         // No n = new No();
+        double startTime = System.nanoTime();
         l.inserirEstudantes();
+        double endTime = System.nanoTime();
+        double timeElapsed = endTime - startTime;
+        System.out.print("Tempo de criação do vetor: " + timeElapsed / 1000000 + "ms");
+        System.out.println("--------------------");
+        System.out.println("--------------------");
+        System.out.println("--------------------");
+        l.removerEstudante();
         // for(int i=0; i<10; i++){
         // Estudante e = new Estudante();
         // n.setEstudante(e);
