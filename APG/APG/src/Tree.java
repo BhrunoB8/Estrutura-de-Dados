@@ -64,11 +64,16 @@ public class Tree {
         Tree t2 = new Tree();
 
         t2.inserirEstudante(array);
-
+        double startTime = System.nanoTime();
         t2.root = t2.insertLevelOrder(array, t2.root, 0);
+        double endTime = System.nanoTime();
+        double timeElapsed = endTime - startTime;
+       
         t2.inOrder(t2.root);
+        System.out.print("\nTempo de criação do vetor: "+timeElapsed/1000000+"ms \n");
         // int arr[] = { 1, 2, 3, 4, 5, 6, 6, 6, 6 };
         // t2.root = t2.insertLevelOrder(arr, t2.root, 0);
         // t2.inOrder(t2.root);
+        https://www.geeksforgeeks.org/construct-complete-binary-tree-given-array/
     }
 }
